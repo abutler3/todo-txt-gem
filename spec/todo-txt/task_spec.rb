@@ -92,6 +92,11 @@ describe Todo::Task do
     task.overdue?.should be_true
   end
 
+	it 'should return false if task is not overdue' do
+		task = Todo::Task.new((Date.today + 1).to_s + " This task is due soon.")
+		task.overdue?.should be_false
+	end
+
   it 'should return nil on overdue? if there is no date' do
     task = Todo::Task.new "No date!"
     task.overdue?.should be_nil
